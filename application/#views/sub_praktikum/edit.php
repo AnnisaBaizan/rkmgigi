@@ -1,0 +1,54 @@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Sub Praktikum
+                </h2>
+            </div>
+            <div class="body">
+				<?php echo validation_errors(); ?>
+				<?php echo form_open('sub_praktikum/edit/'.$sub_praktikum['id_sub_praktikum']); ?>
+
+					<div class="row clearfix">
+                        	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        		<label for="kd_praktikum" class="control-label">Kd Praktikum</label>
+	                            <div class="form-group">
+	                                <div class="form-line">
+										<select name="kd_praktikum" class="form-control">
+											<option value="">select praktikum</option>
+											<?php 
+											foreach($all_praktikum as $praktikum)
+											{
+												$selected = ($praktikum['id_praktikum'] == $sub_praktikum['kd_praktikum']) ? ' selected="selected"' : "";
+
+												echo '<option value="'.$praktikum['id_praktikum'].'" '.$selected.'>'.$praktikum['nama_praktikum'].'</option>';
+											} 
+											?>
+										</select>
+									</div>
+								</div>
+							</div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<label for="nama_sub_praktikum" class="control-label">Nama Sub Praktikum</label>
+                            <div class="form-group">
+                                <div class="form-line">
+									<input type="text" name="nama_sub_praktikum" value="<?php echo ($this->input->post('nama_sub_praktikum') ? $this->input->post('nama_sub_praktikum') : $sub_praktikum['nama_sub_praktikum']); ?>" class="form-control" id="nama_sub_praktikum" />
+								</div>
+                            </div>
+						</div>
+					</div>
+
+					<div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<button type="submit" class="btn btn-success m-t-15 waves-effect">
+								<i class="fa fa-check"></i> Save
+							</button>
+				        </div>
+					</div>
+					
+				<?php echo form_close(); ?>
+			</div>
+        </div>
+    </div>
+</div>
